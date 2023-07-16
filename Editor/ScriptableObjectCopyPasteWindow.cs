@@ -120,7 +120,6 @@ public class ScriptableObjectCopyPasteWindow : EditorWindow
 
             ListFields();
             lastSelectedObject = selectedObject;
-            Debug.Log($"<color=orange><b>Value Changed</b></color>");
         }
     }
 
@@ -135,13 +134,17 @@ public class ScriptableObjectCopyPasteWindow : EditorWindow
         var oldFieldInfoList = new Dictionary<FieldInfo, bool>(fieldInfoList);
         fieldInfoList.Clear();
 
-        FieldInfo[] fields = selectedObject.GetType().GetFields();
+        FieldInfo[] fields = selectedObject.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+            .Where(f => f.GetCustomAttributes(typeof(SerializeField), true).Length > 0 || f.IsPublic)
+            .ToArray();
+
         foreach (var field in fields)
         {
             bool toggleStatus = !oldFieldInfoList.TryGetValue(field, out var value) || value;
             fieldInfoList.Add(field, toggleStatus);
         }
     }
+
 
     private void Paste()
     {
