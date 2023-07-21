@@ -1,3 +1,6 @@
+# WARNING!
+# Currently it is not copying the values directly, it is copying the references, so if the value changes, all other scriptable objects are changed.
+
 # 🌟Scriptable Object Field Copier 🌟
 
 "Scriptable Ojbect Field Copier" is a time-saving tool for Unity, allowing swift and precise copying of ScriptableObject data. It supports selective field copying, batch pasting, and even works with private fields marked with [SerializeField]. With Undo History integration and a user-friendly interface, it's an essential asset for efficient Unity project management.
