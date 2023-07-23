@@ -1,6 +1,3 @@
-# WARNING!
-# Currently it is not copying the values directly, it is copying the references, so if the value changes, all other scriptable objects are changed.
-
 # 🌟Scriptable Object Field Copier 🌟
 
 "Scriptable Ojbect Field Copier" is a time-saving tool for Unity, allowing swift and precise copying of ScriptableObject data. It supports selective field copying, batch pasting, and even works with private fields marked with [SerializeField]. With Undo History integration and a user-friendly interface, it's an essential asset for efficient Unity project management.
@@ -25,3 +22,27 @@ In the window that appears, make the necessary filters and click on the "Paste" 
 Also, you can access the editor window through the Unity menu by navigating to Tools -> ScriptableObject Field Copier.
 
 🚀 Elevate your Unity project with Scriptable Object Field Copier and accelerate your game development process! 🎮
+
+
+Tested variable types;
+
+```
+int
+bool
+float
+string
+CustomClass
+UnityEngine.Object
+Sprite
+Mesh
+Texture2D
+UnityEngine.Object[]
+List<int>
+List<CustomClass>
+AnimationCurve
+Gradient
+AssetReference
+privateString (private field)
+ReadOnlyClass (read-only field)
+NestedClass (nested class)
+CustomClassWithoutDefaultConstructor
