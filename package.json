@@ -1,7 +1,7 @@
 {
   "name": "com.rucesocial.scriptableobjectfieldcopier",
   "displayName": "Scriptable Object Field Copier",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "unity": "2021.1",
   "description": "A Unity tool that allows you to effortlessly copy fields from one ScriptableObject and paste into the fields of your chosen ScriptableObjects, with added functionality to filter through fields.",
   "keywords": ["unity", "copy", "paste", "fields", "scriptableobject"],
