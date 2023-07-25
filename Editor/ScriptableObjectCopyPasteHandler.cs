@@ -12,7 +12,11 @@ namespace RuceSocial.ScriptableObjectFieldCopier
     {
         private static Object copiedObject;
 
-        [MenuItem("Assets/Copy ScriptableObject", true)]
+        #region MenuItems and ContextMenu
+
+        #region Copy Methods
+
+        [MenuItem("Assets/Copy ScriptableObject", true), MenuItem("CONTEXT/ScriptableObject/Copy", true)]
         public static bool ValidateCopy()
         {
             return Selection.activeObject is ScriptableObject && Selection.objects.Length == 1;
@@ -23,6 +27,19 @@ namespace RuceSocial.ScriptableObjectFieldCopier
         {
             copiedObject = Selection.activeObject;
         }
+
+        [MenuItem("CONTEXT/ScriptableObject/Copy")]
+        private static void Copy(MenuCommand command) => Copy(command.context);
+
+        private static void Copy(Object unityObject)
+        {
+            var so = unityObject as ScriptableObject;
+            copiedObject = so;
+        }
+
+        #endregion
+
+        #region Paste Methods
 
         [MenuItem("Assets/Paste ScriptableObject", true)]
         public static bool ValidatePaste()
@@ -40,11 +57,30 @@ namespace RuceSocial.ScriptableObjectFieldCopier
             return false;
         }
 
+        [MenuItem("CONTEXT/ScriptableObject/Paste", true)]
+        private static bool ValidatePaste(MenuCommand command) => ValidatePaste();
+
+
         [MenuItem("Assets/Paste ScriptableObject")]
         public static void Paste()
         {
             ScriptableObjectCopyPasteWindow.OpenWindow(copiedObject as ScriptableObject);
         }
+
+        [MenuItem("CONTEXT/ScriptableObject/Paste")]
+        private static void Paste(MenuCommand command) => Paste();
+
+        [ContextMenu("Paste")]
+        public static void Paste(Object unityObject)
+        {
+            ScriptableObjectCopyPasteWindow.OpenWindow(copiedObject as ScriptableObject);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Operation Methods
 
         public static List<Object> GetEligibleObjects(Object copiedObject)
         {
@@ -161,5 +197,7 @@ namespace RuceSocial.ScriptableObjectFieldCopier
                 return null;
             }
         }
+
+        #endregion
     }
 }

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2023-07-25
+
+### Added
+
+- Implemented copy and paste operations into the context menu. Now you can perform copy-paste operations on a scriptable object directly from the context menu in the Unity Editor.
+- Code has been reorganized into regions for better readability and maintenance.
+
 ## [1.1.1] - 2023-07-23
 
 ### Fixed
